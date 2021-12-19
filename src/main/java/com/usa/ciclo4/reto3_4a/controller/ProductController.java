@@ -30,6 +30,14 @@ public class ProductController {
     public  Product update(@RequestBody Product product){
         return  productService.update(product);
     }
+    
+    
+    @GetMapping("/{reference}")
+    public Optional<Product> getProduct(@PathVariable("reference") String reference){
+        return productService.getProduct(reference);
+    }
+        
+    
 
     @DeleteMapping("/{reference}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
