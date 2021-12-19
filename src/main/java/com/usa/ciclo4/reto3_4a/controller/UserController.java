@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user")
@@ -42,7 +43,10 @@ public class UserController {
     public  User authenticateUser(@PathVariable("email")String email,@PathVariable("password")String password){
         return  userService.authenticateUser(email,password);
     }
-
+    @GetMapping("/{id}")
+    public Optional<User> getUser(@PathVariable("id") Integer id){
+        return userService.getUser(id);
+    }
     @GetMapping("/emailexist/{email}")
     public  boolean emailExists(@PathVariable("email")String email){
         return  userService.emailExists(email);

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/accessory")
@@ -17,6 +18,11 @@ public class ProductController {
     @GetMapping("/all")
     public List<Product> getAll(){
         return  productService.getAll();
+    }
+
+    @GetMapping("/{reference}")
+    public Optional<Product> getProduct(@PathVariable("reference") String reference){
+        return productService.getProduct(reference);
     }
 
     @PostMapping("/new")
