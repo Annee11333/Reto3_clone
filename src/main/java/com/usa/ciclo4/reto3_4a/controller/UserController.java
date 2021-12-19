@@ -25,7 +25,19 @@ public class UserController {
     public  void save(@RequestBody User user){
         userService.save(user);
     }
+    
+    
+    
+   @GetMapping("/{id}")
 
+    public Optional<User> getUser(@PathVariable("id") Integer id){
+        return userService.getUser(id); 
+    }
+          
+    
+        
+          
+    
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public  User update(@RequestBody User user){
